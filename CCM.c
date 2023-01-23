@@ -10,7 +10,7 @@
 #define AWS_CONNECT_RESPONSE_DELAY (4000)  /* milliseconds*/
 #define WIFI_CONNECT_RESPONSE_DELAY (4000) /* milliseconds*/
 #define DELAY (8000)                       /* milliseconds*/
-#define BUF_SIZE (1200)
+#define BUF_SIZE (256)
 #define NUMBER_OF_CHARACTERS (10)
 #define AT_COMMAND_SIZE (22)
 
@@ -33,7 +33,8 @@ const cyhal_uart_cfg_t uart_config =
         .stop_bits = STOP_BITS_1,
         .parity = CYHAL_UART_PARITY_NONE,
         .rx_buffer = rx_buf,
-        .rx_buffer_size = RX_BUF_SIZE};
+        .rx_buffer_size = RX_BUF_SIZE
+    };
 
 /*******************************************************************************
  * Function Name: Bsp_Init
@@ -62,7 +63,7 @@ void uart_init()
 {
 
     /*Initialize UART to communicate with CCM via pins P12_0 and P12_1 */
-    cyhal_uart_init(&uart_obj, P12_1, P12_0, NULL, &uart_config);
+    cyhal_uart_init(&uart_obj, P12_1, P12_0, NC, NC, NULL, &uart_config);
     cyhal_uart_set_baud(&uart_obj, BAUD_RATE, &actualbaud);
 
     /*Initialize Debug UART */
