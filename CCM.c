@@ -1,5 +1,5 @@
 /*******************************************************************************
- * $ Copyright 2022 Cypress Semiconductor $
+ * $ Copyright 2023 Cypress Semiconductor $
  *******************************************************************************/
 #include "CCM.h"
 
@@ -265,7 +265,7 @@ void delay_ms(int delay)
  * Summary:
  *          Send AT commands to CCM Evaluation kit , receive response
  *          ,compare it with the desired_response if compare is 1 and update
- *          the result variable.
+ *          the result variable
  *
  *
  * input parameter: char *str

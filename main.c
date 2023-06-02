@@ -9,7 +9,7 @@
  *
  *
  ******************************************************************************
- * $ Copyright 2022 Cypress Semiconductor $
+ * $ Copyright 2023 Cypress Semiconductor $
  *******************************************************************************/
 
 /*******************************************************************************
@@ -83,7 +83,7 @@ cyhal_ezi2c_t sEzI2C;
 cyhal_ezi2c_slave_cfg_t sEzI2C_sub_cfg;
 cyhal_ezi2c_cfg_t sEzI2C_cfg;
 volatile bool capsense_scan_complete = false;
-uint32_t brightness_perc;
+int brightness_perc;
 int result_ccm = 0;
 
 /*******************************************************************************
@@ -435,7 +435,7 @@ static void aws_publish()
 
     memset(buffer, '\0', sizeof(buffer));
 
-    sprintf((char *)buffer, "AT+SEND1 %ld\n", brightness_perc);
+    sprintf((char *)buffer, "AT+SEND1 %d\n", brightness_perc);
 
     /* Send AT command for sending message to AWS cloud */
     at_command_send_receive((char *)buffer, CAPSENSE_DATA_SEND_DELAY, &result_ccm, NULL);
