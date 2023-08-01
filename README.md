@@ -8,7 +8,7 @@ The preprogrammed firmware supports AWS IoT ExpressLink specification. For more 
 
 [View this README on GitHub.](https://github.com/Infineon/mtb-example-ccm-mqtt-publish-capsense-slider)
 
-[Provide feedback on this code example.](https://cypress.co1.qualtrics.com/jfe/form/SV_1NTns53sK2yiljn?Q_EED=eyJVbmlxdWUgRG9jIElkIjoiQ0UyMzUyNzYiLCJTcGVjIE51bWJlciI6IjAwMi0zNTI3NiIsIkRvYyBUaXRsZSI6IkFJUk9D4oSiIENDTSBNUVRULVBVQkxJU0gtQ0FQU0VOU0UtU0xJREVSIiwicmlkIjoidmVsbXVydWdhbiIsIkRvYyB2ZXJzaW9uIjoiMi4wLjAiLCJEb2MgTGFuZ3VhZ2UiOiJFbmdsaXNoIiwiRG9jIERpdmlzaW9uIjoiTUNEIiwiRG9jIEJVIjoiSUNXIiwiRG9jIEZhbWlseSI6IldJRkkifQ==)
+[Provide feedback on this code example.](https://cypress.co1.qualtrics.com/jfe/form/SV_1NTns53sK2yiljn?Q_EED=eyJVbmlxdWUgRG9jIElkIjoiQ0UyMzUyNzYiLCJTcGVjIE51bWJlciI6IjAwMi0zNTI3NiIsIkRvYyBUaXRsZSI6IkFJUk9D4oSiIENDTSBNUVRULVBVQkxJU0gtQ0FQU0VOU0UtU0xJREVSIiwicmlkIjoidmVsbXVydWdhbiIsIkRvYyB2ZXJzaW9uIjoiMi4wLjEiLCJEb2MgTGFuZ3VhZ2UiOiJFbmdsaXNoIiwiRG9jIERpdmlzaW9uIjoiTUNEIiwiRG9jIEJVIjoiSUNXIiwiRG9jIEZhbWlseSI6IldJRkkifQ==)
 
 ## Requirements
 
@@ -156,11 +156,13 @@ To know more details about the two flows, see the [AN234322 - Getting started wi
 
 <b>AWS flow</b>
 
-**Note:** See section 6.1.2 AWS flow in the [AN234322 - Getting started with AIROC&trade; IFW56810 Single-band Wi-Fi 4 Cloud Connectivity Manager](https://www.infineon.com/dgdl/Infineon-AN234322_-_Getting_Started_with_AIROC_IFW56810_Single-band_Wi-Fi_4_Cloud_Connectivity_Manager-ApplicationNotes-v01_00-EN.pdf?fileId=8ac78c8c7e7124d1017e90db764f0c6b&utm_source=cypress&utm_medium=referral&utm_campaign=202110_globe_en_all_integration-application_note) for creating a "Thing" in AWS console using the output you receive from the terminal.
+**Note:** See section 7.1.2 AWS flow in the [AN234322 - Getting started with AIROC&trade; IFW56810 Single-band Wi-Fi 4 Cloud Connectivity Manager](https://www.infineon.com/dgdl/Infineon-AN234322_-_Getting_Started_with_AIROC_IFW56810_Single-band_Wi-Fi_4_Cloud_Connectivity_Manager-ApplicationNotes-v01_00-EN.pdf?fileId=8ac78c8c7e7124d1017e90db764f0c6b&utm_source=cypress&utm_medium=referral&utm_campaign=202110_globe_en_all_integration-application_note) for creating a "Thing" in AWS console using the output you receive from the terminal.
 
-1. Connect the board to your PC using the provided USB cable through the KitProg3 USB connector.
+1. Define #define AWS_FLOW as 1.
 
-2. Connect the CCM evaluation kit to Wi-Fi using either of the following steps:
+2. Connect the board to your PC using the provided USB cable through the KitProg3 USB connector.
+
+3. Connect the CCM evaluation kit to Wi-Fi using either of the following steps:
 
 
     a.)  Modify the `SET_SSID` and `SET_PASSPHRASE` macros in *main.c* according to your Wi-Fi credentials.
@@ -177,11 +179,11 @@ To know more details about the two flows, see the [AN234322 - Getting started wi
          Example: #define CIRRENT_APP_ONBOARDING 1
 
 
-3. **MQTT_Endpoint configuration:** Modify the `SET_ENDPOINT` macro in *main.c* to match with that of the MQTT broker endpoint of your AWS console.
+4. **MQTT_Endpoint configuration:** Modify the `SET_ENDPOINT` macro in *main.c* to match with that of the MQTT broker endpoint of your AWS console.
 
-4. Open a terminal program and select the KitProg3 COM port. Set the serial port parameters to 8N1 and 115200 baud.
+5. Open a terminal program and select the KitProg3 COM port. Set the serial port parameters to 8N1 and 115200 baud.
 
-5. Program the board using one of the following:
+6. Program the board using one of the following:
 
    <details><summary><b>Using Eclipse IDE for ModusToolbox&trade; software</b></summary>
 
@@ -203,7 +205,7 @@ To know more details about the two flows, see the [AN234322 - Getting started wi
       ```
    </details>
 
-5. After programming, the application starts automatically. Confirm that "AIROC™ CCM MQTT-PUBLISH-CAPSENSE-SLIDER" is displayed on the UART terminal.
+7. After programming, the application starts automatically. Confirm that "AIROC™ CCM MQTT-PUBLISH-CAPSENSE-SLIDER" is displayed on the UART terminal.
 
 
    **Figure 2. Terminal output on program startup**
@@ -211,7 +213,7 @@ To know more details about the two flows, see the [AN234322 - Getting started wi
       ![](images/aws-flow.png)
 
 
-6. Confirm that a touch on CAPSENSE&trade; linear slider changes brightness of the LED and publishes the  brightness of the LED to AWS Test Console.
+8. Confirm that a touch on CAPSENSE&trade; linear slider changes brightness of the LED and publishes the  brightness of the LED to AWS Test Console.
 
    **Figure 3. Output on AWS console**
 
@@ -222,7 +224,7 @@ To know more details about the two flows, see the [AN234322 - Getting started wi
 
 **Note:** Use the quick start guide received along with your kit box for the initial setup.
 
-See section 6.1.1 CIRRENT&trade; cloud flow in the [AN234322 - Getting started with AIROC&trade; IFW56810 Single-band Wi-Fi 4 Cloud Connectivity Manager](https://www.infineon.com/dgdl/Infineon-AN234322_-_Getting_Started_with_AIROC_IFW56810_Single-band_Wi-Fi_4_Cloud_Connectivity_Manager-ApplicationNotes-v01_00-EN.pdf?fileId=8ac78c8c7e7124d1017e90db764f0c6b&utm_source=cypress&utm_medium=referral&utm_campaign=202110_globe_en_all_integration-application_note) for binding the kit to your CIRRENT console.
+See section 7.1.1 CIRRENT&trade; cloud flow in the [AN234322 - Getting started with AIROC&trade; IFW56810 Single-band Wi-Fi 4 Cloud Connectivity Manager](https://www.infineon.com/dgdl/Infineon-AN234322_-_Getting_Started_with_AIROC_IFW56810_Single-band_Wi-Fi_4_Cloud_Connectivity_Manager-ApplicationNotes-v01_00-EN.pdf?fileId=8ac78c8c7e7124d1017e90db764f0c6b&utm_source=cypress&utm_medium=referral&utm_campaign=202110_globe_en_all_integration-application_note) for binding the kit to your CIRRENT console.
 
 1. Define #define AWS_FLOW as 0.
 
@@ -350,6 +352,7 @@ Document title: *CE235276* - *AIROC™ CCM MQTT-PUBLISH-CAPSENSE-SLIDER*
  1.1.0   | BSP fix
  1.1.1   | Removed CY8CKIT-062-BLE from supported kits
  2.0.0   | Major update to support ModusToolbox™ software v3.0
+ 2.0.1   | CCM library fix
 <br>
 
 ---------------------------------------------------------
